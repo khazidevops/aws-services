@@ -53,3 +53,7 @@ nginx -v
 
 echo -e "\n🔁 Please log out and log back in to apply Docker group membership."
 echo -e "\n🌐 Nginx is running. Access your server IP in the browser to verify!"
+
+#nano setup-docker-aws.sh
+#chmod +x setup-docker-aws.sh
+#./setup-docker-aws.sh
