@@ -1,0 +1,24 @@
+# 1. Update your system
+sudo apt update -y
+sudo apt upgrade -y
+
+# 2. Install dependencies
+sudo apt install -y wget gnupg lsb-release
+
+# 3. Add PostgreSQL APT repository
+# Replace $(lsb_release -cs) with your Ubuntu codename (like jammy, focal) if needed.
+echo "deb [signed-by=/usr/share/keyrings/postgresql-archive-keyring.gpg] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | \
+sudo tee /etc/apt/sources.list.d/pgdg.list
+
+# 4. Import PostgreSQL signing key
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
+sudo gpg --dearmor -o /usr/share/keyrings/postgresql-archive-keyring.gpg
+
+# 5. Update package lists again
+sudo apt update
+
+# 6. Install PostgreSQL 17
+sudo apt install -y postgresql-17
+
+# 7. Verify PostgreSQL installation
+psql --version
